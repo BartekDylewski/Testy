@@ -57,8 +57,9 @@ public class CalculatorWithMenu {
                         double wynik7 = abs(a);
                         System.out.print("|" +a +"| = " +wynik7 +"\n");
                 }
-                }else{
-                    System.out.print("Przepraszam, ale nie ma takiej opcji\n");
+
+            }else{
+                System.out.print("Przepraszam, ale nie ma takiej opcji\n");
             }
         }while(powrot == 1);
     }
