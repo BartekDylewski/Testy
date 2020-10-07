@@ -1,4 +1,9 @@
 //https://www.youtube.com/watch?v=iE8tZ0hn2Ws
+//https://beginnersbook.com/2015/07/java-swing-tutorial/
+
+//Proste menu logowania.
+//User          Bartek
+//Password      Dylewski
 
 import javax.swing.*;
 import java.awt.*;
