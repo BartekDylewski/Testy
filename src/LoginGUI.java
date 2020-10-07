@@ -47,7 +47,7 @@ public class LoginGUI implements ActionListener{
         panel.add(passwordText);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(10, 80, 80, 25);
+        loginButton.setBounds(142, 80, 80, 25);
         loginButton.addActionListener(new LoginGUI());
         panel.add(loginButton);
 
