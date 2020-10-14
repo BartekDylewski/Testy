@@ -10,11 +10,11 @@ class Clicker implements ActionListener{
     private double points;
     private double multiplier;
     private double increaseMultiplierPrize;
-    private JLabel label;
+    private JLabel pointsLabel;
     private JFrame frame;
     private JPanel panel;
-    private JButton clicker;
-    private JButton increaseMultiplier;
+    private JButton clickerButton;
+    private JButton increaseMultiplierButton;
 
     public Clicker(){
 
@@ -22,7 +22,7 @@ class Clicker implements ActionListener{
         increaseMultiplierPrize = 10;
 
         frame = new JFrame();
-        frame.setSize(310, 170);
+        frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
@@ -30,38 +30,42 @@ class Clicker implements ActionListener{
         panel.setLayout(null);
         panel.setBackground(Color.darkGray);
 
-        clicker = new JButton("Click me!");
-        clicker.setBackground(Color.lightGray); // Ustawia kolor tła przycisku
-        clicker.setForeground(Color.darkGray); // Ustawia kolor czcionki
-        clicker.setFocusPainted(false); // Usuwa kwadraty po najechaniu kursorem na button
-        clicker.setBounds(20, 20, 250, 50);
-        clicker.addActionListener(this);
+        clickerButton = new JButton("Click me!");
+        clickerButton.setBackground(Color.lightGray); // Ustawia kolor tła przycisku
+        clickerButton.setForeground(Color.darkGray); // Ustawia kolor czcionki
+        clickerButton.setFocusPainted(false); // Usuwa kwadraty po najechaniu kursorem na button
+        clickerButton.setBounds(20, 20, 350, 50);
+        clickerButton.addActionListener(this);
 
-        increaseMultiplier = new JButton("Increase Multiplier by 0.5 for " + increaseMultiplierPrize + " points");
-        increaseMultiplier.setBackground(Color.lightGray); // Ustawia kolor tła przycisku
-        increaseMultiplier.setForeground(Color.darkGray); // Ustawia kolor czcionki
-        increaseMultiplier.setFocusPainted(false); // Usuwa kwadraty po najechaniu kursorem na button
-        increaseMultiplier.setBounds(20, 75, 250 ,25);
-        increaseMultiplier.addActionListener(new ActionListener() {
+        increaseMultiplierButton = new JButton("Increase Multiplier by 0.5 for " + increaseMultiplierPrize + " points");
+        increaseMultiplierButton.setBackground(Color.lightGray); // Ustawia kolor tła przycisku
+        increaseMultiplierButton.setForeground(Color.darkGray); // Ustawia kolor czcionki
+        increaseMultiplierButton.setFocusPainted(false); // Usuwa kwadraty po najechaniu kursorem na button
+        increaseMultiplierButton.setBounds(20, 75, 350 ,25);
+        increaseMultiplierButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(points >= increaseMultiplierPrize){
                     multiplier = multiplier + 0.5; // Dodaje 0.5 do mnożnika
                     points = points - increaseMultiplierPrize; // Odejmuje cenę zwiększenia mnożnika
                     increaseMultiplierPrize *= 2; // Zwiększa cenę
-                    label.setText("Points: " + points); // Wyświetla punkty
-                    increaseMultiplier.setText("Increase Multiplier by 0.5 for " + increaseMultiplierPrize + " points");
+                    pointsLabel.setText("<html> Points: " + points + "<br>"
+                            + "Multiplier: " + multiplier + "</html>");  // Wyświetla punkty
+                    increaseMultiplierButton.setText("Increase Multiplier by 0.5 for " + increaseMultiplierPrize + " points");
                 }
             }
         });
 
-        label = new JLabel("Points: " + points);  // Wyświetla punkty
-        label.setBounds(20, 85, 250, 50);
-        label.setForeground(Color.lightGray); // Zmienia kolor czcionki
+        pointsLabel = new JLabel("<html> Points: " + points + "<br>"
+                + "Multiplier: " + multiplier + "</html>");  // Wyświetla punkty
+        pointsLabel.setBounds(20, 85, 250, 100);
+        pointsLabel.setText("<html> Points: " + points + "<br>"
+                + "Multiplier: " + multiplier + "</html>");  // Wyświetla punkty
+        pointsLabel.setForeground(Color.lightGray); // Zmienia kolor czcionki
 
-        frame.add(increaseMultiplier);
-        frame.add(label);
-        frame.add(clicker);
+        frame.add(increaseMultiplierButton);
+        frame.add(pointsLabel);
+        frame.add(clickerButton);
         frame.add(panel);
         frame.setVisible(true);
 
@@ -71,7 +75,8 @@ class Clicker implements ActionListener{
             @Override
             public void run() {
                 points = points + 1;
-                label.setText("Points: " + points); // Wyświetla punkty
+                pointsLabel.setText("<html> Points: " + points + "<br>"
+                        + "Multiplier: " + multiplier + "</html>");  // Wyświetla punkty
             }
         }, 1000,1000);
     }
@@ -79,7 +84,8 @@ class Clicker implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         points = points + (multiplier); // Dodaje do punktów 1*mnożnik
-        label.setText("Points: " + points); // Wyświetla punkty
+        pointsLabel.setText("<html> Points: " + points + "<br>"
+                + "Multiplier: " + multiplier + "</html>");  // Wyświetla punkty
     }
 
     public static void main(String[] args) {
